@@ -1,0 +1,12 @@
+webservices -> aplicação interoperavel hospetada e acessada pelo protocolo http / legíveis por máquinas
+rest -> permite reuso e reutilização
+
+SOAP - criado pela microsoft / envelopamento -> uso de http para chamadas rpc trafegando xml
+Rest -> estilo arquitetural
+
+Hypermedia As The Engine Of Application State (HATEOAS) - (exemplo do wikipedia - links)
+permite navegar entre os endpoints de forma dinamica 
+inclui links na resposta
+enlgoba informações que os clients irão precisar para dar os proximos passos
+
+swagger funciona como um wsdl
