@@ -1,0 +1,66 @@
+instalar java
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt install oracle-java11-installer
+java -version
+javac -version
+
+instalação do maven
+sudo apt-get install maven
+mvn -v
+
+adicionar atalho
+sudo apt-get install --no-install-recommends gnome-panel
+gnome-desktop-item-edit --create-new ~/Desktop
+escolher eclipse / pasta do eclipse
+editar -> adicionar icone / read write
+executar / aceitar software de terceiros
+
+instalar mysql
+quick gite mysql apt (escolher primeira referencia)
+download do arquivo / abrir pasta
+dpkg -i <nome_arquivo>.deb
+server e cluster / mysql - 5.7 / ok
+apt-get update
+apt-get install -y mysql-server
+colocar senha / repete senha / ok
+mysql -u root -p
+digitar senha / show databases
+
+configurar root para localhost
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'admin123';
+
+instalar docker
+// verificar se esta rodando ou instalado
+service docker.io status
+// versão do kernel 5.0.0.23 ....
+uname -a
+apt-get update
+apt-get install -y docker.io
+docker -v
+// versao do docker
+docker version
+// detalhes do docker
+docker info
+
+instalando docker compose (no windows nao precisa)
+apt-get install -y curl
+curl -L "https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose"
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+instalar git
+apt-get install -y git
+git status
+
+executar projeto / verificar ambiente
+<abrir pasta home/usuario>
+git clone https://github.com/leandrocgsi/RestWithSpringBootUdemy.git
+sudo chmod -R 777 RestWithSpringBootUdemy
+<abrir projeto [07 RestWithSpringBootUdemy Migrations] no eclipse>
+abrir pasta "07 RestWithSpringBootUdemy Migrations"
+mvn flyway:migrate
+<ver se as tabelas foram criadas>
+// subir via console
+mvn clean package spring-boot:run
+// testes no postman

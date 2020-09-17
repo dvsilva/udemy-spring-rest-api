@@ -1,0 +1,10 @@
+alt + shift + s -> abre menu com opções de código (source)
+
+acessar primeiro endpoint
+http://localhost:8080/greeting?name=Danyllo
+
+commitar no github
+git status
+git add . 
+git commit -m "hello spring boot and rest udemy"
+git push

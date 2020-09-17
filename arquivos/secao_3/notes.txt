@@ -1,0 +1,13 @@
+instalação do java 11
+
+JAVA_HOME -> CAMINHO INSTALAÇÃO DO JAVA
+adicionar no path -> %JAVA_HOME%\bin
+java -version / javac -version
+
+instalação do maven
+
+M2_HOME -> CAMINHO INSTALAÇÃO DO MAVEN
+adicionar no path -> %M2_HOME%\bin
+mvn -v
+
+heidisql -> cliente de mysql mais leve
