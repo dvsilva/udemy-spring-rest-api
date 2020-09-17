@@ -28,7 +28,6 @@ public class PersonServices {
 	}	
 	
 	public PersonVO findById(Long id) {
-
 		var entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
 		return DozerConverter.parseObject(entity, PersonVO.class);

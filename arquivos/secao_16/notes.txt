@@ -1,0 +1,16 @@
+cors -> cors origin resource share
+- w3c -> permite acessar sites de outras origens
+- por padrão só permmite que acesse recursos do mesmo servidor
+
+adicionar anotação em cima dos metodos
+@CrossOrigin(origins= "http://localhost:8080")
+@CrossOrigin(origins= {"http://localhost:8080", "http://www.erudio.com.br"})
+
+cors de forma global
+adicionar no webconfig
+
+public void addCorsMappings(CorsRegistry registry) {
+	registry.addMapping("/**")
+		.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+}
+

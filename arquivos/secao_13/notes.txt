@@ -1,0 +1,79 @@
+content negociation
+- possilidade do servidor disponibilizar diferentes formatos de arquivos ou idioma ou tipo de conteudo para os clientes
+- server-driven -> server proativo
+- agent-driven -> cliente escolhe que tipo de formato ele deseja
+
+adicionar dependencias
+<!-- for XML support -->  
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
+        
+<!-- for YML support -->
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-yaml</artifactId>
+</dependency>
+
+criar classe webconfig para fazer as configurações
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer{
+	
+	private static final MediaType MEDIA_TYPE_YML = MediaType.valueOf("application/x-yaml");
+	
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		converters.add(new YamlJackson2HttpMessageConverter());
+	}
+	
+	@Override
+	public void configureContentNegotiation(ContentNegotiationConfigurer configurer ) {
+		
+		// Via EXTENSION. localhost:8080/person.x-yaml
+		configurer
+			.favorParameter(false)
+			.ignoreAcceptHeader(false)
+			.defaultContentType(MediaType.APPLICATION_JSON)
+			.mediaType("json", MediaType.APPLICATION_JSON)
+			.mediaType("xml", MediaType.APPLICATION_XML);
+		
+		// Via QUERY PARAM. localhost:8080/person?mediaType=xml 
+		configurer
+		 	.favorPathExtension(false) 
+		 	.favorParameter(true)
+		 	.parameterName("mediaType") 
+		 	.ignoreAcceptHeader(true)
+		 	.useRegisteredExtensionsOnly(false)
+		 	.defaultContentType(MediaType.APPLICATION_JSON) 
+		 	.mediaType("json", MediaType.APPLICATION_JSON) 
+		 	.mediaType("xml", MediaType.APPLICATION_XML);
+		
+		//  Via HEADER (CABEÇALHO DA REQUEST)
+		configurer.favorPathExtension(false)
+			.favorParameter(false)
+			.ignoreAcceptHeader(false)
+			.useRegisteredExtensionsOnly(false)
+			.defaultContentType(MediaType.APPLICATION_JSON)
+			.mediaType("json", MediaType.APPLICATION_JSON)
+			.mediaType("xml", MediaType.APPLICATION_XML)
+			.mediaType("x-yaml", MEDIA_TYPE_YML);
+	}
+
+}
+
+modificar métodos do controller colocar produces e consumer
+{ "application/json", "application/xml", "application/x-yaml" }
+
+yaml -> parecido com json mais enxuto
+
+classe para converter yaml
+
+public final class YamlJackson2HttpMessageConverter extends AbstractJackson2HttpMessageConverter{
+
+	public YamlJackson2HttpMessageConverter() {
+		super(new YAMLMapper(), MediaType.parseMediaType("application/x-yaml"));
+	}
+
+}

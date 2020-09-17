@@ -1,0 +1,9 @@
+atalhos
+alt + seta para baixo -> move linha para baixo
+ctrl + alt + seta para baixo -> copia linha atual para baixo
+alt + shift + s -> menu de gerar código
+
+desativar hot key
+clique direito na area de trabalho -> opções gráficas -> teclas de atalho -> desativar
+
+plugin para arquivos json para chrome -> JSON Viewer

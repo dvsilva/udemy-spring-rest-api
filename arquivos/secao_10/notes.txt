@@ -1,0 +1,7 @@
+versionamento da API
+- manutenção e mudanças
+- adicionar atributos em classes de dominio ou mudanças de parametros
+
+recomendacao
+person/v1
+e cria novo controller a cada versao (person/v2)

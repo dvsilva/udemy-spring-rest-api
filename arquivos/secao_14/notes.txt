@@ -1,0 +1,44 @@
+HATEOAS - hypermedia as engine of application state
+
+adicionar dependencia no pom.xml
+<!-- for HATEOAS support -->
+<dependency>
+	<groupId>org.springframework.hateoas</groupId>
+	<artifactId>spring-hateoas</artifactId>
+</dependency>
+
+configurar classe VO
+public class PersonVO extends ResourceSupport
+
+configurar mapping para o dozer
+@Mapping("id")
+private Long key;
+
+adicionar anotações na classe Startup
+@EnableAutoConfiguration 
+- permite applicationcontext seja automaticamente carregado baseado no jars da app
+- é sempre feita depois que os beans já foram registrados no applicationcontext 
+- diminui responsabilidade na definição das configurações
+- pode excluir atraves do exclude
+@ComponentScan -> demonstra o spring que deve scanear e encontrar arquivos de configuração
+
+@SpringBootApplication
+@EnableAutoConfiguration
+@ComponentScan
+public class Startup 
+
+remover @EnableWebMvc -> duas intancias do jackson para serialização causa problemas
+
+incluir link no vo
+vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
+
+ocultar campos hatoas com null
+
+para json adicionar configuração no application.properties
+spring.jackson.default-property-inclusion=non_null
+
+para yaml adicionar configuração do converter
+public YamlJackson2HttpMessageConverter() {
+super(new YAMLMapper()
+	.setSerializationInclusion(JsonInclude.Include.NON_NULL), MediaType.parseMediaType("application/x-yaml"));
+}

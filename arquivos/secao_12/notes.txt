@@ -1,0 +1,6 @@
+custom JSON serialization
+- customizar retorno do json
+
+@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"}) - define ordem dos campos no json
+@JsonProperty("first_name") - define um nome para o atributo no json
+@JsonIgnore - ignorar atributo no json

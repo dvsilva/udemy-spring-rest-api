@@ -1,0 +1,54 @@
+swagger
+
+adicionar dependencias
+
+<!-- for Swagger Endpoints support -->
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>2.9.2</version>
+</dependency>
+		
+<!-- for Swagger UI support -->
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.9.2</version>
+</dependency>
+
+adicionar classe de configuração
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("br.com.erudio"))
+				.paths(PathSelectors.any())
+				.build()
+				.apiInfo(apiInfo());
+	}
+
+	private ApiInfo apiInfo() {
+		return new ApiInfo(
+				"RESTful API With Spring Boot 2.1.3", 
+				"Some description about your API.",
+				"v1",
+				"Terms Of Service Url",
+				new Contact("Leandro Costa", "www.erudio.com.br", "your_email@gmail.com"),
+				"License of API", "License of URL", Collections.emptyList());
+	}
+}
+
+anotacao no controller
+//@Api(value = "PersonEndpoint", description = "REST API for Person", tags = { "PersonEndpoint" })
+@Api(tags = "PersonEndpoint")
+
+anotacao no metodo
+@ApiOperation(value = "Find all people" ) 
+
+importar no postman pelo swagger
+import from link -> localhost:8080/v2/api-docs
