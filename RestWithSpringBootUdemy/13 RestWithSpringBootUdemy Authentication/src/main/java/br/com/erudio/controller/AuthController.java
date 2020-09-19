@@ -23,41 +23,42 @@ import br.com.erudio.security.jwt.JwtTokenProvider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "AuthenticationEndpoint") 
+@Api(tags = "AuthenticationEndpoint")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-	
+
 	@Autowired
 	AuthenticationManager authenticationManager;
 
 	@Autowired
 	JwtTokenProvider tokenProvider;
-	
+
 	@Autowired
 	UserRepository repository;
-	
+
 	@ApiOperation(value = "Authenticates a user and returns a token")
 	@SuppressWarnings("rawtypes")
-	@PostMapping(value = "/signin", produces = { "application/json", "application/xml", "application/x-yaml" }, 
-			consumes = { "application/json", "application/xml", "application/x-yaml" })
+	@PostMapping(value = "/signin", 
+		produces = { "application/json", "application/xml", "application/x-yaml" }, 
+		consumes = { "application/json", "application/xml", "application/x-yaml" })
 	public ResponseEntity signin(@RequestBody AccountCredentialsVO data) {
 		try {
 			var username = data.getUsername();
-			var pasword = data.getPassword();
-			
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, pasword));
-			
+			var password = data.getPassword();
+
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+
 			var user = repository.findByUsername(username);
-			
+
 			var token = "";
-			
+
 			if (user != null) {
 				token = tokenProvider.createToken(username, user.getRoles());
 			} else {
 				throw new UsernameNotFoundException("Username " + username + " not found!");
 			}
-			
+
 			Map<Object, Object> model = new HashMap<>();
 			model.put("username", username);
 			model.put("token", token);

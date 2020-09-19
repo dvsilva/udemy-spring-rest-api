@@ -1,0 +1,34 @@
+autenticação com jwt e spring security
+
+adicionar dependencias
+<!-- for Security support -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+<!-- for Tokens support -->
+<dependency>
+	<groupId>io.jsonwebtoken</groupId>
+	<artifactId>jjwt</artifactId>
+	<version>0.9.1</version>
+</dependency>
+
+jpql -> jpa query language
+
+debug shell -> permite ver valor das variáveis em modo debug
+
+environment no postman
+add environment
+add variable 
+name host 
+initial value http://localhost:8080
+current value http://localhost:8080
+referenciar com {{host}}
+
+para adicionar em uma variavel (lembrar de mudar accept / content type para json)
+if (responseCode.code >= 200 && responseCode.code <= 299) {
+    var jsonData = JSON.parse(responseBody);
+    postman.setEnvironmentVariable('bearer_token', jsonData.token);
+}
+
