@@ -1,0 +1,26 @@
+upload de arquivos
+
+definir configurações de multipart no application.properties
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.file-size-threshold=2KB
+spring.servlet.multipart.max-file-size=200MB
+spring.servlet.multipart.max-request-size=215MB
+file.upload-dir=/Code/UdemySpringBoot/UploadDir
+
+criar classe de configuração de arquivos FileStorageConfig.class
+anotar com @ConfigurationProperties(prefix= "file") para obter a configuraçao do arquivo application.properties
+
+habilitar na classe startup
+@EnableConfigurationProperties({
+	FileStorageConfig.class
+})
+
+enviando arquivo no postman
+em body selecionar form-data
+colocar uma key file com tipo File e selecionar o arquivo
+
+receber nome do arquivo com a extensão
+@GetMapping("/downloadFile/{fileName:.+}")
+
+
+

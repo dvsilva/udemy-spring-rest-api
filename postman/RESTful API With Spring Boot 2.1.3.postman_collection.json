@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "61ffa0da-6075-451e-9eae-cfac7323c1c9",
+		"_postman_id": "e7bee212-facb-4a12-af0a-df7ea41f0a78",
 		"name": "RESTful API With Spring Boot 2.1.3",
 		"description": "Some description about your API.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -495,7 +495,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1c3f0d65-e0bb-4a0d-ab5a-a7a0b0eacd5f",
+										"id": "ed33c3ba-98e5-443a-aac4-b2de59ee3992",
 										"exec": [
 											"if (responseCode.code >= 200 && responseCode.code <= 299) {",
 											"    var jsonData = JSON.parse(responseBody);",
@@ -532,6 +532,135 @@
 									"path": [
 										"auth",
 										"signin"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "File",
+					"item": [
+						{
+							"name": "Upload a file",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{content_accept}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{content_type}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{bearer_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/danyl/OneDrive/Documentos/Documento.docx"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/api/file/v1/uploadFile",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"file",
+										"v1",
+										"uploadFile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload multiple files",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{content_accept}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{content_type}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{bearer_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/C:/Users/danyl/OneDrive/Documentos/Documento 1.docx",
+												"/C:/Users/danyl/OneDrive/Documentos/Documento.docx"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/api/file/v1/uploadMultipleFiles",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"file",
+										"v1",
+										"uploadMultipleFiles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download a file",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{content_accept}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{bearer_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/file/v1/downloadFile/Documento.docx",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"file",
+										"v1",
+										"downloadFile",
+										"Documento.docx"
 									]
 								}
 							},
