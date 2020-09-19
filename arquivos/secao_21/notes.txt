@@ -1,0 +1,63 @@
+docker
+- não é um sistema de virtualização tradicional
+- temos um sistema operacional completo e isolado (como uma máquina fisica)
+- recursos são isolados por containers por bibliotecas de kernel compartilhadas entre host e container
+- utiliza a bib lib container: fornece ambiente de execução isolado e seguro para implantarmos nossas apps
+- containers são similares as máquinas virtuais (ambientes isolados) - são mais leves
+- containers nao precisam de um SO completo apenas utilizam diretamente os recursos da maquina hospedeira sem camadas de software adicionais
+	- menos CPU, memória RAM e espaço em disco do que uma máquina virtual
+- empresa / tecnologia / plataforma
+	- dotClound: Solomon Hykes
+- escrito em GO
+- OpenSource: licença apache 2
+- portabilidade: possibilita empacotamento de uma app dentro de um container permite que seja executado em qualquer continer
+- menos tempo de deploy e infra: uma vez dockerizada não precisa de ajuste de ambiente para o funcionamento da app
+- ambiente sempre o mesmo: configure-o uma vez e replique-o quantas vezes quiser
+- uma imagem criada pode ser movida para a nuvem
+- imagens construidas a partir de arquivo DockerFile
+
+docker-compose -> ferramenta separada do Docker
+- uma abastração sobre o Docker Client que pode ser instalado junto com o docker
+- usado para inicializar multiplos containeres docker simultaneamente e prover comunicação entre eles de forma automatica
+- simplifica e encapsula alguns dos argumentos que passamos no comando 'docker run'
+- automatiza e abstrai os comandos que usamos no docker client
+- na pratica, o docker-compose pega os comandos do docker e abstrai eles em um arquivo docker-compose.yml
+	- encapsula todas as opções que normalmente passamos ao docker client via linha de comando
+ 	- comandos sao simplificados e ganham nova sintaxe mais simples
+- dizemos ao docker client como proceder -> processar arquivo e criar containers
+
+ 
+criar docker file para app spring e para o mysql
+criar docker-compose.yml
+
+redefinir padrões de fabrica -> icone do docker / settings / reset / reset to factory defaults
+
+executar aplicação
+- abrir power shell na pasta raiz
+- rodar comando para build -> docker-compose build
+- rodar aplicação -> docker-compose up
+- rodar comando para build e destravar console -> docker-compose -d --build
+- verificar problemas -> docker ps / docker logs <container_id>
+- docker compose down -> baixar serviços / matar os containers que estao rodando desse docker-compose
+
+docker hub -> github de imagens docker
+subir imagens para o docker hub 
+- docker images
+- docker login docker.io
+- docker push leandrocgsi/mysql-rest-with-spring-boot-udemy
+- docker leandrocgsi/rest-with-spring-boot-udemy
+
+guerrillamail (https://www.guerrillamail.com/pt/inbox) -> cria email temporario
+
+integração com o travis
+- commit do codigo no github
+- github dispara um gatilho
+- travisCI gera a imagem e envia para o docker hub
+- imagem é enviada ao docker hub
+
+criar arquivo .travis.yml
+criar login e projeto no travisci
+acessar settings do projeto
+criar variaveis DOCKER_USERNAME (usuario do docker hub) e DOCKER_PASSWORD (nao usar caracteres especiais)
+
+
