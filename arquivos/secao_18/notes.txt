@@ -1,0 +1,10 @@
+verbo patch
+- não é idempotente / retorna valores diferentes a cada request
+- corrupção de dados colisão de duas bad request executadas em um mesmo recurso em um mesmo frame de tempo (raro mas é possivel)
+
+@transactional -> controle de transação (englobar ACID)
+Atomicidade -> a transação deve ser considerada operação unica / se executar uma operação com erro toda a operação deve ser desfeita
+Consistencia > se executar com sucesso a base de dados deve estar consistente
+Insolação -> operações concorrentes deve ser independentes / nao podem quebrar a integridade dos dados
+Durabilidade -> quando for persistido devem estar gravadas no banco de dados
+
