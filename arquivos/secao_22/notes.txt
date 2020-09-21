@@ -1,0 +1,35 @@
+serviços da amazon
+
+criar banco de dados -> RDS
+criar usuario (serviço IAM) -> chhave de acesso (integrar com travis)
+criar cluster -> ECS (EC2 ubuntu)
+	criar key pair
+
+criar repositorio ECR -> armazenar as imagens / container registry (tipo docker hub)
+instalar AWS cli
+configurar AWS cli -> executar comando no powershell: aws configure
+(ao final esse comando cria uma pasta na pasta do usuario chamada .aws)
+
+enviar imagens para amazon
+abrir pasta do projeto
+docker-compose build
+$(aws ecr get-login --no-include-email --region us-east-2)
+[executar comando que o console emitiu para conectar ao ecr]
+docker build -t rest-with-spring-boot-udemy .
+docker tag leandrocgis/rest-with-spring-boot-udemy:latest 60084xxxx ...
+docker push 60084xxxx ...
+
+criação da taskdefinition na amazon [escolher EC2]
+criar um serviço -> na taskdefinition ir em actions > create service
+
+acessar via ssh com o putty e puttygen
+instalar o puttygen e pegar a chave gerada pela aws [.pem]
+
+corrigir erro do docker-compose no arquivo DockerFile e docker-compose.xml
+modificar DockerFile e maneira de realizar deploy
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+deploy continuo com travis CI
+adicionar variaveis: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION, IMAGE_REPO_URL, CLUSTER_NAME E SERVICE_NAME
+
+ajustar arquivo travis.yml
+
+adicionar permissão ao usuario IAM TRAVIS_CI (ECS FULL ACCESS)
+ajustar task definition e service para usar a nova task definition na aws
+

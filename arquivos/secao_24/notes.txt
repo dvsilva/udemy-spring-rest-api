@@ -1,0 +1,13 @@
+sites úteis
+
+https://spring.io/
+https://dzone.com/
+https://www.infoq.com/br/
+https://martinfowler.com/
+https://mkyong.com/
+https://www.baeldung.com/
+https://docs.aws.amazon.com/
+https://hub.docker.com/
+https://github.com/
+https://travis-ci.org/
+https://pt.stackoverflow.com/
